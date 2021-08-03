@@ -1,0 +1,43 @@
+{% extends "./main_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                {% with messages = get_flashed_messages() %}
+
+                    {% if messages %}
+                        {{message}}
+                    {%endif%}
+
+                {% endwith %}
+                <h1 class="card-title">ini adalah data {{ data['Sesi Absensi'] }}</h1>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>NRP</th>
+                                <th>Nama</th>
+                                <th>Jam</th>
+                                <th>Tanggal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for mhs in data['Absensi'] %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ mhs['NRP'] }}</td>
+                                <td>{{ mhs['Nama'] }}</td>
+                                <td>{{ mhs['waktu'] }}</td>
+                                <td>{{ mhs['tanggal'] }}</td>                                   
+                            </tr>
+                        {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>       
+{% endblock %}

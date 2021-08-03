@@ -1,0 +1,15 @@
+{% extends "main_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h1> {{sesi[1]}}</h1>
+                <img width="100%" src="{{ url_for('video_feed',ip=ipcam) }}" alt="">
+                <br><br>
+                <a href="{{url_for('cap_man',id_sesi=sesi[0])}}"><button style="font-size:24px; width:100%" class="btn btn-info">Capture<i class="fa fa-edit"></i></button></a><br>
+            </div>
+        </div>
+    </div>
+</div>       
+{% endblock %}

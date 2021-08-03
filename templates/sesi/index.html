@@ -1,0 +1,68 @@
+{% extends "./main_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                {% with messages = get_flashed_messages() %}
+
+                    {% if messages %}
+                        {{message}}
+                    {%endif%}
+
+                {% endwith %}
+                <h1 class="card-title">ini index semua Sesi</h1>
+                <div class="table-responsive">
+                    <a href="{{url_for('buat_sesi')}}"><button type="button" class="btn btn-success">Tambah</button></a>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Aksi</th>
+                                <th>Kelas</th>
+                                <th>Mata kuliah</th>
+                                <th>Status absensi</th>
+                                <!-- <th>Nama sesi</th> -->
+                                <th>Waktu Dibuka</th>
+                                <th>Ruang</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in value %}
+                            <tr>
+                                <td>{{ data[0] }}</td>
+                                <td>
+                                    <a href="{{ url_for('lihat_sesi',id_sesi=data[0])}}"><button style="font-size:24px" class="btn btn-info">Lihat <i class="fa fa-edit"></i></button></a><br>
+                                    {% if data[3] != 'Ditutup' %}
+                                        {% if data[3] != 'DiCapture' and data[3] != 'Mengenali' %}
+                                        <a href="{{ url_for('mulai_capture',id_sesi=data[0])}}"><button style="font-size:24px" class="btn btn-primary">Mulai capture otomatis<i class="fa fa-edit"></i></button></a><br>
+                                        <a href="{{ url_for('mulai_capture_manual',id_sesi=data[0])}}"><button style="font-size:24px" class="btn btn-primary">Mulai capture manual<i class="fa fa-edit"></i></button></a><br>
+                                        {% endif %}
+                                        {% if data[3] == 'Dijeda' %}
+                                        <a href="{{ url_for('tutup_sesi',id_sesi=data[0])}}"><button style="font-size:24px" class="btn btn-warning">Tutup <i class="fa fa-edit"></i></button></a><br>
+                                        {% endif %}
+                                        <a href="{{ url_for('hapus_sesi',id_sesi=data[0])}}" onclick="return confirm('Anda yakin mau menghapus item ini ?')"><button style="font-size:24px" class="btn btn-danger">Delete <i class="fa fa-delete"></i></button></a><br>
+                                    {% elif data[3] == 'Ditutup'%}
+                                    <a href="{{ url_for('hapus_sesi',id_sesi=data[0])}}" onclick="return confirm('Anda yakin mau menghapus item ini ?')"><button style="font-size:24px" class="btn btn-danger">Delete <i class="fa fa-delete"></i></button></a>
+                                    {% endif %}
+                                    </td>
+                                <td>{{ data[1] }}</td>
+                                <td>{{ data[2] }}</td>
+                                <td>{{ data[3] }}</td>
+                                <!-- <td>{{ data[4] }}</td> -->
+                                <td>{{ data[5] }}</td>
+                                <td>{{ data[6] }}</td>
+                                <td><a href="http://{{ data[7] }}"> Live view</a> |
+                                    <a href="{{url_for('video',id_sesi=data[0])}}"> Live view</a>
+                                    </td>
+                               
+                            </tr>
+                        {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>       
+{% endblock %}

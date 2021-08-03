@@ -1,0 +1,13 @@
+{% extends "main_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-body">
+                <h1>Live preview Ruang {{namaRuang}}</h1>
+                <img width="100%" src="{{ url_for('video_feed',ip=ipcam) }}" alt="">
+            </div>
+        </div>
+    </div>
+</div>       
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "./main_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                {% with messages = get_flashed_messages() %} 
+
+                    {% if messages %}
+                        {{message}}
+                    {%endif%}
+
+                {% endwith %}
+                <h1 class="card-title">ini mahasiswa kelas {{kelas[2]}}</h1>
+                <div class="table-responsive">
+                    <a href="{{url_for('buat_mahasiswa')}}"><button type="button" class="btn btn-success">Tambah</button></a>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Kelas </th>
+                                <th>NRP </th>
+                                <th>Nama </th>
+                                <th>Gambar </th>
+                                <th>Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in data_mhs %}
+                            <tr>
+                                <td>{{ data[0] }}</td>
+                                <td>{{kelas[2]}}</td>
+                                <td>{{ data[2] }}</td>
+                                <td>{{ data[3] }}</td>
+                                <td>{{ data[4] }}</td>
+                                <td>
+                                    <a href="{{ url_for('lihat_mahasiswa',id_mahasiswa=data[0])}}"><button style="font-size:24px" class="btn btn-info">Lihat <i class="fa fa-edit"></i></button></a>
+                                    <a href="{{ url_for('edit_mahasiswa',id_mahasiswa=data[0])}}"><button style="font-size:24px" class="btn btn-warning">Edit <i class="fa fa-edit"></i></button></a>
+                                    <a href="{{ url_for('hapus_mahasiswa',id_mahasiswa=data[0])}}" onclick="return confirm('Anda yakin mau menghapus item ini ?')"><button style="font-size:24px" class="btn btn-danger">Delete <i class="fa fa-delete"></i></button></a>
+                                </td>
+                            </tr>
+                        {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>       
+{% endblock %}

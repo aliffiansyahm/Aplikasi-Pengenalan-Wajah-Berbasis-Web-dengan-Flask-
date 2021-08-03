@@ -1,0 +1,28 @@
+{% extends "main_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+<div>
+    <h1 class="card-title">Mengedit Mata kuliah</h1>
+    <form method="POST">
+        {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+                {{message}}
+            {%endif%}
+
+        {% endwith %}
+        <div class="form-group">
+          <label for="mata_kuliah">Mata Kuliah</label>
+          <input type="text" name="mata_kuliah" class="form-control" id="mata_kuliah" placeholder="Masukkan nama mata kuliah" value="{{ data[0][1] }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+            </div>
+        </div>
+    </div>
+</div>       
+{% endblock %}

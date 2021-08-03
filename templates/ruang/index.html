@@ -1,0 +1,45 @@
+{% extends "./main_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                {% with messages = get_flashed_messages() %}
+
+                    {% if messages %}
+                        {{message}}
+                    {%endif%}
+
+                {% endwith %}
+                <h1 class="card-title">ini index semua kelas</h1>
+                <div class="table-responsive">
+                    <a href="{{url_for('buat_ruang')}}"><button type="button" class="btn btn-success">Tambah</button></a>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nama Ruang</th>
+                                <th>Alamat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in value %}
+                            <tr>
+                                <td>{{ data[0] }}</td>
+                                <td>{{ data[1] }}</td>
+                                <td>{{ data[2] }}</td>
+                                <td>
+                                    <a href="{{ url_for('cek_kamera',id_ruang=data[0])}}"><button style="font-size:24px" class="btn btn-warning">Live View <i class="fa fa-edit"></i></button></a>
+                                    <a href="{{ url_for('edit_ruang',id_ruang=data[0])}}"><button style="font-size:24px" class="btn btn-warning">Edit <i class="fa fa-edit"></i></button></a>
+                                    <a href="{{ url_for('hapus_ruang',id_ruang=data[0])}}" onclick="return confirm('Anda yakin mau menghapus item ini ?')"><button style="font-size:24px" class="btn btn-danger">Delete <i class="fa fa-delete"></i></button></a>
+                                </td>
+                            </tr>
+                        {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>       
+{% endblock %}

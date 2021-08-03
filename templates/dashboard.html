@@ -1,0 +1,31 @@
+{% extends "main_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h1>Halaman dashboard</h1>
+                {% if session['tipe_login'] == "Admin"  %}
+                <a href="{{ url_for('list_pengguna') }}">LIST PENGGUNA</a>
+                <br>
+                <a href="{{ url_for('list_mata_kuliah') }}">LIST Mata kuliah</a>
+                <br>
+                <a href="{{ url_for('list_kelas') }}">LIST Kelas</a>
+                <br>
+                <a href="{{ url_for('list_ruang') }}">LIST Ruangan</a>
+                <br>
+                {% endif %}
+                <a href="{{ url_for('list_sesi') }}">LIST Sesi</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% with messages = get_flashed_messages() %}
+
+    {% if messages %}
+        {{message}}
+    {%endif%}
+
+{% endwith %}
+
+{% endblock %}

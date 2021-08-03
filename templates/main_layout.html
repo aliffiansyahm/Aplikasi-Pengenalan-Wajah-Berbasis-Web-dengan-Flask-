@@ -1,0 +1,248 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <title>APP ku</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='main.css')}}">
+    <link rel="stylesheet" href="https://unpkg.com/@popperjs/core@2">
+</head>
+<body> -->
+    <!-- NAVBAR -->
+    <!-- <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+
+            <div class="container">
+                <a class="navbar-brand mr-4" href="/">
+                    <font color="white">Aplikasiku</font>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto">
+                        {% if 'email_login' not in session: %}
+                        <a class="nav-item nav-link" href="{{url_for('login')}}"><input type="submit" class="btn btn-outline-info"
+                                        value="login"></a>
+                        {% else %}
+                        <a class="nav-item nav-link" href="{{url_for('list_pengguna')}}"><input type="submit" class="btn btn-outline-info"
+                            value="list pengguna"></a>
+                        <a class="nav-item nav-link" href="{{url_for('list_mata_kuliah')}}"><input type="submit" class="btn btn-outline-info"
+                            value="list mata_kuliah"></a>
+                        <a class="nav-item nav-link" href="{{url_for('list_kelas')}}"><input type="submit" class="btn btn-outline-info"
+                            value="list kelas"></a>
+                        <a class="nav-item nav-link" href="{{url_for('list_sesi')}}"><input type="submit" class="btn btn-outline-info"
+                            value="list sesi"></a>
+                        <a class="nav-item nav-link" href="{{url_for('dashboard')}}"><input type="submit" class="btn btn-outline-info"
+                            value="Dasboard"></a>
+                        <a class="nav-item nav-link" href="{{url_for('logout')}}"><input type="submit" class="btn btn-outline-info"
+                            value="logout"></a>
+                        {% endif %}
+                    </div>
+                </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8"> -->
+                <!-- FLASH -->
+                <!-- {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }}"> {{ message }} </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Absensi Wajah Deep Learning</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='StarAdminTemplate/vendors/iconfonts/mdi/css/materialdesignicons.min.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='StarAdminTemplate/vendors/css/vendor.bundle.base.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='StarAdminTemplate/vendors/css/vendor.bundle.addons.css')}}">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='StarAdminTemplate/css/style.css')}}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{{ url_for('static',filename='StarAdminTemplate/images/logo small.png')}}" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="{{url_for('index')}}">
+          <img src="{{ url_for('static',filename='StarAdminTemplate/images/logo.png')}}" alt="logo" />
+        </a>
+        <a class="navbar-brand brand-logo-mini" href="{{url_for('index')}}">
+          <img src="{{ url_for('static',filename='StarAdminTemplate/images/logo small.png')}}" alt="logo" />
+        </a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center">
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown d-none d-xl-inline-block">
+            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <span class="profile-text">{{ session['email_login'] }}</span>
+              <img class="img-xs rounded-circle" src="{{ url_for('static',filename='StarAdminTemplate/images/faces/face1.jpg')}}" alt="Profile image">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+              <a class="dropdown-item" href="{{url_for('logout')}}">
+                Sign Out
+              </a>
+            </div>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <!-- <span class="icon"><i class="fa fa-chevron-down"></i></span> -->
+          <!-- <i class="mdi mdi-alarm-check mr-0 text-gray"></i> Menu -->
+          <span class="mdi mdi-chevron-double-left" data-inline="false"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item nav-profile">
+            <div class="nav-link">
+              <div class="user-wrapper">
+                <div class="profile-image">
+                  <img src="{{ url_for('static',filename='StarAdminTemplate/images/faces/face1.jpg')}}" alt="profile image">
+                </div>
+                <div class="text-wrapper">
+                  <p class="profile-name">{{ session['email_login'] }}</p>
+                  <div>
+                    <small class="designation text-muted">{{ session['tipe_login'] }}</small>
+                    <span class="status-indicator online"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          {% if 'email_login' not in session: %}
+            <a class="nav-item nav-link" href="{{url_for('login')}}"><input type="submit" class="btn btn-outline-info"
+                            value="login"></a>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('dashboard')}}">
+                    <i class="menu-icon mdi mdi-television"></i>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
+            {% if session['tipe_login'] == "Admin"  %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('list_pengguna')}}">
+                    <i class="menu-icon mdi mdi-account"></i>
+                    <span class="menu-title">List Pengguna</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('list_mata_kuliah')}}">
+                    <i class="menu-icon mdi mdi-book-open"></i>
+                    <span class="menu-title">List Mata Kuliah</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('list_kelas')}}">
+                    <i class="menu-icon mdi mdi-window-open"></i>
+                    <span class="menu-title">List Kelas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('list_ruang')}}">
+                  <i class="menu-icon mdi mdi-window-restore"></i>
+                  <span class="menu-title">List Ruang</span>
+              </a>
+          </li>
+          {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('list_sesi')}}">
+                    <i class="menu-icon mdi mdi-camera"></i>
+                    <span class="menu-title">List Sesi</span>
+                </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('ganti_password')}}">
+                  <i class="menu-icon mdi mdi-key"></i>
+                  <span class="menu-title">Ganti Password</span>
+              </a>
+          </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('logout')}}">
+                    <i class="menu-icon mdi mdi-logout"></i>
+                    <span class="menu-title">Logout</span>
+                </a>
+            </li>
+            {% endif %}
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <!-- FLASH -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}"> {{ message }} </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="container-fluid clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2021
+              </span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Aplikasi Absensi Berbasis Pengenalan Wajah 
+              <i class="mdi mdi-heart text-danger"></i>
+            </span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+  <script src="{{ url_for('static',filename='StarAdminTemplate/vendors/js/vendor.bundle.base.js')}}"></script>
+  <script src="{{ url_for('static',filename='StarAdminTemplate/vendors/js/vendor.bundle.addons.js')}}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="{{ url_for('static',filename='StarAdminTemplate/js/off-canvas.js')}}"></script>
+  <script src="{{ url_for('static',filename='StarAdminTemplate/js/misc.js')}}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="{{ url_for('static',filename='StarAdminTemplate/js/dashboard.js')}}"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>

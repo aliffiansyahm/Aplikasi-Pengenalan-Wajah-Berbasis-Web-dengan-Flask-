@@ -1,0 +1,48 @@
+{% extends "main_layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+<div>
+    <h1 class="card-title">Menambahkan Kelas Baru</h1>
+    <form method="POST">
+        {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+                {{message}}
+            {%endif%}
+
+        {% endwith %}
+        <div class="form-group">
+          <label for="ruang">Pilih Ruang</label>
+          <select name="ruang" class="custom-select">
+            {% for kelas in ruang %}
+            <option value="{{ kelas[0] }}">{{ kelas[1] }} - {{ kelas[2] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="kelas">Pilih kelas</label>
+          <select name="kelas" class="custom-select">
+            {% for kelas in kelas %}
+            <option value="{{ kelas[0] }}">{{ kelas[1] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="Mata kuliah">Pilih mata kuliah</label>
+          <select name="mata_kuliah" class="custom-select">
+            {% for kelas in mata_kuliah %}
+            <option value="{{ kelas[0] }}">{{ kelas[1] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+            </div>
+        </div>
+    </div>
+</div>       
+{% endblock %}
